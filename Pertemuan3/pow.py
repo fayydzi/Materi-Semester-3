@@ -1,0 +1,19 @@
+import time
+
+
+def proof_of_work(block, difficulty):
+
+    target = "0" * difficulty
+
+    start_time = time.time()
+
+    while not block.hash.startswith(target):
+
+        block.nonce += 1
+        block.hash = block.calculate_hash()
+
+    end_time = time.time()
+
+    print("Mining selesai!")
+    print("Nonce :", block.nonce)
+    print("Waktu :", round(end_time - start_time, 4), "detik")
